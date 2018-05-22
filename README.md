@@ -62,9 +62,8 @@ A proper understanding of [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/
 > See you on the other side, and best of luck!
 
 
-
 ## Slack
 In case you have any questions, join our Slack [here](https://slackin-africastalking.now.sh/) and join the #internship-challenge channel.
 
 #### About Africa's Talking Code Challenges
-Please read the overview [here.](http://atdevoutreach.viewdocs.io/codeChallenge05018/)
+Please read the overview [here.](http://atdevoutreach.viewdocs.io/IoTCodeChallengeMay2018/)
