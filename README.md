@@ -52,11 +52,9 @@ A proper understanding of [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/
 - Your repo name should be Thor
 
 ##### How to submit
-1. Head over to the code challenge [here](http://atdevoutreach.viewdocs.io/codeChallenge05018/CodeChallenge05018/) to get acquainted.
+1. Check out the format for submitting your code [here](http://atdevoutreach.viewdocs.io/IotInternshipCodeChallengeMay2018/CodeChallengeSteps/)
 
-2.  Check out the format for submitting your code [here](http://atdevoutreach.viewdocs.io/codeChallenge05018/CodeChallengeSteps/)
-
-3.  Make sure when creating a branch to use your correct phone Number, as this is what we will use to get back to you.
+2.  Make sure when creating a branch to use your correct phone Number, as this is what we will use to get back to you.
 
 > NB: As a branch-name you can also use your email.
 > See you on the other side, and best of luck!
@@ -66,4 +64,4 @@ A proper understanding of [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/
 In case you have any questions, join our Slack [here](https://slackin-africastalking.now.sh/) and join the #internship-challenge channel.
 
 #### About Africa's Talking Code Challenges
-Please read the overview [here.](http://atdevoutreach.viewdocs.io/IoTCodeChallengeMay2018/)
+Please read the overview [here.](http://atdevoutreach.viewdocs.io/IotInternshipCodeChallengeMay2018/)
