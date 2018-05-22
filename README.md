@@ -27,7 +27,7 @@ Write an IoT application that generates climatic data(wind-speed, humidity and p
 - Compile it on any platform e.g Raspberry Pi for Python, Arduino or Intel  Edison for C or C++ or Python, or ESP-X in C/C++ or Lua.
 - Use of [PlatformIO](https://platformio.org/) where applicable is a bonus.
 - Integrating with  CI/CD tools such as [TravisCI](https://travis-ci.org/)/[CircleCI](https://circleci.com/)/[Bitbucket-pipelines](https://bitbucket.org/product/features/pipelines)/[Appveyor](https://www.appveyor.com/)  will be an added bonus! Attach [badge in the README](http://shields.io/) if you choose to do so.
-- Your repo name should be Thanos. 
+
 
 ## Task 2
 
@@ -49,7 +49,7 @@ A proper understanding of [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/
 - C# [link](https://github.com/eclipse/paho.mqtt.m2mqtt)
 
 - Attach [Fritzing](http://fritzing.org/) schematics and relevant wiring diagrams in a folder named wiring  in your project root path for your hardware setup.
-- Your repo name should be Thor
+
 
 ##### How to submit
 1. Check out the format for submitting your code [here](http://atdevoutreach.viewdocs.io/IotInternshipCodeChallengeMay2018/CodeChallengeSteps/)
