@@ -1,5 +1,7 @@
 # IoT Internship Code Challenge - 22nd May 2018
-## Due: 23rd 9:00am May or Earlier
+## Due: 23rd 9:00am May or Earlier 
+ 
+![Submission Status](https://img.shields.io/badge/SUBMISSION-CLOSED-red.svg) 
 
 
 ##### There are two tasks in this challenge, choose between the two. The submission instructions are specified at the bottom of the challenge page.
