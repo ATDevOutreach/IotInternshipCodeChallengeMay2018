@@ -1,0 +1,16 @@
+{
+    "authors": {
+        "name": "Arthur Kennedy Otieno",
+        "website": "https://www.otienoken.me",
+        "git": "https://www.github.com/TheBeachmaster"
+    },
+    "description": "AfricasTalkingCloud Library is an MQTT Library for Arduino devices with support for various networking modules such as WiFi101,WiFi Shield,ATWIN,CC3000,GSM,Ethernet,ESP8266",
+    "frameworks": "arduino",
+    "keywords": "AfricasTalking,MQTT,IoT",
+    "name": "AfricasTalkingCloud",
+    "platforms": "*",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TheBeachMaster/AfricasTalkingIOT-dist.git"
+    }
+}

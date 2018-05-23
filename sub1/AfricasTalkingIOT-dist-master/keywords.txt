@@ -1,0 +1,12 @@
+connect 	KEYWORD2
+disconnect 	KEYWORD2
+publish 	KEYWORD2
+publish_progmem 	KEYWORD2
+subscribe 	KEYWORD2
+unsubscribe 	KEYWORD2
+loop 	KEYWORD2
+connected 	KEYWORD2
+set_server	KEYWORD2
+set_callback	KEYWORD2
+set_client	KEYWORD2
+set_stream	KEYWORD2

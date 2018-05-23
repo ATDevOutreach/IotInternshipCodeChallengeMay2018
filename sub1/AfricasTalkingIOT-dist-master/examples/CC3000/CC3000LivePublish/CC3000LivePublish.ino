@@ -1,0 +1,151 @@
+/*
+ Name:		CC3000LivePublish.ino
+ Created:	10/6/2017 14:50:08
+ Author:	Kennedy Otieno
+*/
+#include <SPI.h>
+#include <Adafruit_CC3000.h>
+#include <AfricasTalkingCloud.h>
+
+#define ADAFRUIT_CC3000_IRQ   3  // MUST be an interrupt pin!
+#define ADAFRUIT_CC3000_VBAT  5
+#define ADAFRUIT_CC3000_CS    10
+Adafruit_CC3000 cc3000 = Adafruit_CC3000(ADAFRUIT_CC3000_CS, ADAFRUIT_CC3000_IRQ, ADAFRUIT_CC3000_VBAT, SPI_CLOCK_DIVIDER);
+Adafruit_CC3000_Client cc3000client = Adafruit_CC3000_Client();
+void subMsgCallBack(char* topic, byte* payload, unsigned int length);
+AfricasTalkingCloudClient client(subMsgCallBack, cc3000client); //Notice the missing sandbox flag
+//Network Settings
+char ssid[] =  "WiFi";
+char pass[] =  "Pass";
+#define WLAN_SEC WLAN_SEC_WPA2
+
+/**
+Here's a nice trick to generate cleint IDs if you have tones of devices
+TODO
+*/
+
+char msg[50];
+long value = 0;
+long lastMsg = 0;
+// the setup function runs once when you press reset or power the board
+void setup() {
+	Serial.begin(9600);
+	while (!Serial)
+	{
+		;
+	}
+	cc3000Connect();
+}
+
+// the loop function runs over and over again until power down or reset
+void loop() {
+	if (!client.connected())
+	{
+		_keepAlive();
+	}
+	if (!client.loop())
+	{
+		Serial.println(F("Disconnected...Reconnecting."));
+		if (client.connect("CC3000", "<username>", "<password>"))
+		{
+			Serial.println(F("Reconnected..."));
+		}
+		else
+		{
+			Serial.println(F("Reconnection failed."));
+		}
+	}
+	long now = millis();
+	if (now - lastMsg > 5000) {
+		lastMsg = now;
+		++value;
+		snprintf(msg, 75, "%ld", value);
+		Serial.print("Payload: ");
+		Serial.println(msg);
+		client.publish("<username>/CC3000/sensors", msg);
+	}
+}
+void subMsgCallBack(char * topic, byte * payload, unsigned int length)
+{
+	Serial.print(F("Message arrived ["));
+	Serial.print(topic);
+	Serial.print(F("] "));
+	for (unsigned int i = 0; i < length; i++) {
+		Serial.print((char)payload[i]);
+	}
+	Serial.println();
+}
+
+void cc3000Connect()
+{
+	//If we encountered an error Initializing CC3000
+	Serial.println(F("Attempting CC300 Init"));
+	if (!cc3000.begin()) {
+		Serial.println("An error occured Initializing CC3000");
+		for (;;);
+	}
+	//Meanwhile, Delete Old Connection Pofiles and Attempt to Connect to our network
+	Serial.println(F("Attempting to delete old profiles"));
+
+	if (!cc3000.deleteProfiles()) {
+		Serial.println("We encountered an error Deleting Profiles");
+		while (1);
+	}
+	Serial.print("Attempting to connect to ");
+	Serial.println(ssid);
+
+	if (!cc3000.connectToAP(ssid, pass, WLAN_SEC)) {
+		Serial.println("Could not Connect");
+		while (1);
+	}
+
+	//Connected
+	Serial.println("Connected!");
+
+	Serial.println(F("Request DHCP"));
+	while (!cc3000.checkDHCP()) {
+		delay(100);
+	}
+	//Display Connection Details
+	displayConnectionDetails();
+
+}
+bool displayConnectionDetails(void)
+{
+	uint32_t ipAddress, netmask, gateway, dhcpserv, dnsserv;
+
+	if (!cc3000.getIPAddress(&ipAddress, &netmask, &gateway, &dhcpserv, &dnsserv))
+	{
+		Serial.println(F("Unable to retrieve the IP Address!\r\n"));
+		return false;
+	}
+	else
+	{
+		Serial.print(F("\nIP Addr: ")); cc3000.printIPdotsRev(ipAddress);
+		Serial.print(F("\nNetmask: ")); cc3000.printIPdotsRev(netmask);
+		Serial.print(F("\nGateway: ")); cc3000.printIPdotsRev(gateway);
+		Serial.print(F("\nDHCPsrv: ")); cc3000.printIPdotsRev(dhcpserv);
+		Serial.print(F("\nDNSserv: ")); cc3000.printIPdotsRev(dnsserv);
+		Serial.println();
+		return true;
+	}
+}
+void _keepAlive()
+{
+	while (!client.connected()) {
+		Serial.print(F("Contacting Server"));
+		Serial.println();
+		if (client.connect("CC3000", "<username>", "<password>")) {
+			Serial.println("connected");
+			client.publish("<username>/CC3000/awake", "CC3000");
+			client.subscribe("<username>/CC3000/data");
+		}
+		else {
+			Serial.print("Failed, rc=");
+			Serial.print(client.state());
+			Serial.println();
+			Serial.println(" Retrying...");
+			delay(6000);
+		}
+	}
+}
