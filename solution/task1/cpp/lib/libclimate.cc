@@ -6,13 +6,13 @@
 
 float Libclimate::gen_humidity(float dew_point, float temperature)
 {
-    float humidity = 100.00 * ((611 * exp(5423 * ((1 / 273)) - (1 / (dew_point + 273)))) / (611 * exp(5423 * ((1 / 273)-(1 / temperature)))));
+    float humidity = 100.00 * ((611 * expf(5423 * ((1 / 273)) - (1 / (dew_point + 273)))) / (611 * expf(5423 * ((1 / 273)-(1 / temperature)))));
     return humidity;
 }
 
 float Libclimate::gen_pressure(float temperature)
 {
-    float pressure = 101325 * exp(((0.00 - 9.81) * 0.0289644 * (200))/(8.31444598 * (temperature + 273)));
+    float pressure = 101325 * expf(((0.00 - 9.81) * 0.0289644 * (200))/(8.31444598 * (temperature + 273)));
     return pressure;
 }
 
@@ -41,8 +41,8 @@ float Libclimate::relative_humidity_calculator(void)
 float Libclimate::temperature_generator(void)
 {
     srand((unsigned)time(0));
-    float upper_temp = 15.00;
-    float lower_temp = 42.00;
+    float upper_temp = 42.00;
+    float lower_temp = 15.00;
     float temp_range = (upper_temp - lower_temp) + 1;
     float temperature = lower_temp + (float)(temp_range * rand() / (RAND_MAX + 1.00));
     return temperature;
@@ -51,8 +51,8 @@ float Libclimate::temperature_generator(void)
 float Libclimate::longitude_generator(void)
 {
     srand((unsigned)time(0));
-    float upper_l = 98.00;
-    float lower_l = 102.05;
+    float upper_l = 102.05;
+    float lower_l = 98.00;
     float l_range = (upper_l - lower_l) + 1;
     float longitude = lower_l + (float)(l_range * rand() / (RAND_MAX + 1.00));
     return longitude;
