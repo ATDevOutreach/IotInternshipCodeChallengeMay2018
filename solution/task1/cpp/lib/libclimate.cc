@@ -47,3 +47,13 @@ float Libclimate::temperature_generator(void)
     float temperature = lower_temp + (float)(temp_range * rand() / (RAND_MAX + 1.00));
     return temperature;
 }
+
+float Libclimate::longitude_generator(void)
+{
+    srand((unsigned)time(0));
+    float upper_l = 98.00;
+    float lower_l = 102.05;
+    float l_range = (upper_l - lower_l) + 1;
+    float longitude = lower_l + (float)(l_range * rand() / (RAND_MAX + 1.00));
+    return longitude;
+}

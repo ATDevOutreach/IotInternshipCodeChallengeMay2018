@@ -11,9 +11,7 @@
 class Libclimate
 {
 private:
-   float temperature;
-   float dew_point;
-   float longitude;
+
 public:
     Libclimate() {}
     float gen_pressure(float temperature);
@@ -22,6 +20,7 @@ public:
     float temperature_generator();
     float dew_point_calculator(float relative_humidity);
     float relative_humidity_calculator();
+    float longitude_generator();
 };
 
 #endif // LIBCLIMATE_HPP
