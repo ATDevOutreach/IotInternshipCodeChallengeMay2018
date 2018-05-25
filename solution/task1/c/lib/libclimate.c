@@ -1,6 +1,8 @@
 #include <math.h>
 #include "libclimate.h"
 #include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 float gen_pressure(float temperature)
 {
@@ -33,7 +35,7 @@ float temperature_generator()
 
 float dew_point_calculator(float rel_humidity)
 {
-    float dew_point = (100.00 - relative_humidity) / 5;
+    float dew_point = (100.00 - rel_humidity) / 5;
     return dew_point;
 }
 
