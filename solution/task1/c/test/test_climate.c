@@ -1,10 +1,11 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <setjmp.h>
-#include "cmocka.h"
+#include <cmocka.h>
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <time.h>
 #include "../lib/libclimate.h"
 
 #ifdef _WIN32
@@ -59,12 +60,12 @@ static void test_wind_speed_data(void **state)
 
 int main(void)
 {   
-    const struct CMUnitTest testcases[] ={
-        cmoka_unit_test(test_humidity_data),
-        cmoka_unit_test(test_wind_speed_data),
-        cmoka_unit_test(test_pressure_data),
-        cmoka_unit_test(test_random_seed_function),
+    const struct CMUnitTest testcases[] = {
+        cmocka_unit_test(test_humidity_data),
+        cmocka_unit_test(test_wind_speed_data),
+        cmocka_unit_test(test_pressure_data),
+        cmocka_unit_test(test_random_seed_function),
     };
 
-    return cmoka_run_group_tests(testcases, NULL, NULL);
+    return cmocka_run_group_tests(testcases, NULL, NULL);
 }

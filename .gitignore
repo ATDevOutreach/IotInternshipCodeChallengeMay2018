@@ -3,3 +3,7 @@ out
 bin
 __py*
 .pio*
+build
+libs
+bin_dir
+lib_dir

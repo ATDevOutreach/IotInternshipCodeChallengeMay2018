@@ -3,10 +3,11 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <float.h>
 
 float gen_pressure(float temperature)
 {
-    float pressure = 101325 * expintf(((0.00 - 9.81) * 0.0289644 * (200))/(8.31444598 * (temperature + 273)));
+    float pressure = 101325 * expf(((0.00 - 9.81) * 0.0289644 * (200))/(8.31444598 * (temperature + 273)));
     return pressure;
 }
 
@@ -18,7 +19,7 @@ float gen_wind_speed(float longitude)
 
 float gen_humidity(float dew_point , float temperature )
 {
-    float humidity = 100.00 * ((611 * expintf(5423 * ((1 / 273)) - (1 / (dew_point + 273)))) / (611 * expintf(5423 * ((1 / 273)-(1 / temperature)))));
+    float humidity = 100.00 * ((611 * expf(5423.00 * ((1 / 273)) - (1 / (dew_point + 273)))) / (611 * expf(5423.00 * ((1 / 273)-(1 / temperature)))));
     return humidity;
 }
 
