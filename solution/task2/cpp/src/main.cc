@@ -10,6 +10,7 @@
 
 #include "mraa/common.hpp"
 #include "mraa/gpio.hpp"
+#include "mraa/aio.hpp"
 
 #define EXIT_FAILURE 1
 #define LED_PIN 23
@@ -35,7 +36,7 @@ class callback : public virtual mqtt::callback
         client_.subscribe(COMMAND_TOPIC, QOS);
         std::cout << std::endl;
     }
-    void conection_lost(cosnt std::string& cause) override 
+    void connection_lost(const std::string& cause) override 
     {
         std::cout << "\nConnection Lost";
         
